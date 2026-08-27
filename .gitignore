@@ -1,0 +1,96 @@
+# ========================
+# Environments
+# ========================
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ========================
+# Byte-compiled / optimized / DLL files
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ========================
+# Machine Learning & Hugging Face Specific
+# ========================
+# Checkpoints and models
+*.ckpt
+*.safetensors
+*.pt
+*.pth
+*.h5
+*.onnx
+*.pb
+*.tflite
+*.bin
+*.engine
+# Hugging Face local cache & output
+.cache/
+.huggingface/
+runs/
+wandb/
+lightning_logs/
+outputs/
+models/
+checkpoints/
+
+# ========================
+# Audio & Data Files
+# ========================
+# Datasets (Do not upload large datasets to GitHub)
+data/
+dataset/
+voxpopuli/
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.m4a
+# Arrays/Embeddings
+*.npy
+*.npz
+
+# ========================
+# Notebooks
+# ========================
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+# (Optional: ignore all notebooks if you don't want them tracked)
+# *.ipynb
+
+# ========================
+# Distribution / Packaging
+# ========================
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ========================
+# IDEs and Editors
+# ========================
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
