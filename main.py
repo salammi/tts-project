@@ -8,9 +8,9 @@ os.makedirs("outputs", exist_ok=True)
 
 def test_preset_voice():
     print("🎙️ Testing preset voice (Trúc Ly)...")
-    text = "áo Dân Trí đưa tin, Ngày 26/8, Công an phường Bà Rịa đang xác minh vụ việc bắt người trái pháp luật xảy ra ngày 19/8 trước số nhà 176 đường Cách Mạng Tháng Tám (phường Bà Rịa).Theo thông tin ban đầu, tối 19/8, sau trận thắng 2-0 của đội tuyển Việt Nam trước Malaysia trong bán kết lượt về ASEAN Cup 2026, nhiều người dân tại phường Bà Rịa đổ ra đường đi bão"
+    text = "Tại báo cáo trình cổ đông cuối tháng 6/2026, ông Nguyễn Thừa Nhật - Quyền chủ tịch Hội đồng quản trị Tập đoàn Bảo Việt (mã chứng khoán BVH) cho biết, Tập đoàn sẽ ưu tiên nguồn lực để tăng vốn cho các công ty thành viên, đáp ứng yêu cầu phát triển hoạt động kinh doanh cốt lõi."
 
-    audio = tts.infer(text, voice="Minh Triết")
+    audio = tts.infer(text, voice="Trúc Ly")
     
     # Save to file
     out_path = "outputs/preset_voice.wav"
