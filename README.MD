@@ -1,40 +1,191 @@
-```markdown
-# AI Vision Camera Project
+AI Vision Camera Project
 
-## Running the Full Pipeline Test
+AI-powered real-time object detection pipeline using a Python camera client and a Go backend. The pipeline detects objects from a webcam feed, stores detection results in SQLite, and sends an email alert with the captured image when a person is detected.
 
-Follow these step-by-step instructions to run the AI object detection pipeline from start to finish and verify that both the database persistence and email notification systems are functioning correctly[cite: 1].
+Pipeline Overview
+Webcam
+   │
+   ▼
+Python Detection Client
+   │
+   │  gRPC + Detection Image
+   ▼
+Go Backend
+   │
+   ├──► SQLite Database
+   │
+   └──► Email Notification
 
-### Step 1: Start the Go Backend (Terminal 1)
-Open a standard terminal in the project root directory. You do not need to activate the Python virtual environment for this step.
+Running the Full Pipeline Test
 
-Start the database and gRPC server by running:
-`go run main.go`
+Follow these steps to run the AI object detection pipeline from start to finish and verify that database persistence and email notifications are working correctly.
 
-*Wait until you see the following output in the console:*
-> `SQLite database initialized successfully.`
-> `Go gRPC backend listening on [::]:50051`[cite: 1]
+Step 1: Start the Go Backend
 
-### Step 2: Start the Python Camera (Terminal 2)
-Open a **second** terminal window in the project directory. Make sure your Python virtual environment is active (you should see `(ai-cam)` at the start of your prompt)[cite: 1]. 
+Open a terminal in the project root directory.
 
-Start the camera client by running:
-`python detect.py`
+Note: You do not need to activate the Python virtual environment for this step.
 
-*Wait until the webcam video window pops up on your screen.*[cite: 1]
+Run:
 
-### Step 3: Trigger the AI
-1. Look at the webcam video window on your screen[cite: 1].
-2. Step into the frame so the AI can clearly see your head and shoulders[cite: 1].
-3. Wait for the green bounding box to appear with the word **"person"** above it[cite: 1].
+go run main.go
 
-### Step 4: Verify the Success Logs
-The moment the "person" box appears in the video window, verify the outputs in both terminal windows to confirm the end-to-end connection:
 
-**In the Python Terminal, you should instantly see:**
-> `DEBUG: Attached image of size XXXXX bytes`[cite: 1]
+Wait until the backend displays messages similar to:
 
-**In the Go Terminal, you should instantly see:**
-> `Saved 1 detections to SQLite...`
-> `Person detected and image received. Triggering email...`
-> `--> Real-time email alert with photo sent successfully!`[cite: 1]
+SQLite database initialized successfully.
+Go gRPC backend listening on [::]:50051
+
+
+Once these messages appear, the Go backend and SQLite database are ready.
+
+Step 2: Start the Python Camera
+
+Open a second terminal in the project directory.
+
+Activate your Python virtual environment. You should see (ai-cam) at the beginning of your terminal prompt.
+
+Then run:
+
+python detect.py
+
+
+Wait for the webcam video window to appear.
+
+Tip: Keep both terminal windows open so you can monitor the Python client and Go backend simultaneously.
+
+Step 3: Trigger AI Object Detection
+
+With the webcam window open:
+
+Look directly at the webcam.
+Step into the camera frame so your head and shoulders are clearly visible.
+Wait for the AI to detect you.
+Confirm that a green bounding box appears around you with person displayed above it.
+
+Example:
+
+┌─────────────────────────┐
+│                         │
+│      ┌───────────┐      │
+│      │   person  │      │
+│      │     👤    │      │
+│      └───────────┘      │
+│                         │
+└─────────────────────────┘
+
+Step 4: Verify the Success Logs
+
+When the person detection appears, check both terminal windows.
+
+Python Terminal
+
+The Python detection client should immediately display:
+
+DEBUG: Attached image of size XXXXX bytes
+
+
+The exact image size will vary depending on the captured frame.
+
+Go Terminal
+
+The Go backend should immediately display:
+
+Saved 1 detections to SQLite...
+Person detected and image received. Triggering email...
+--> Real-time email alert with photo sent successfully!
+
+Successful End-to-End Flow
+
+If all of the above messages appear, the complete pipeline is working:
+
+✅ Webcam capture is working
+✅ AI object detection is working
+✅ Python client is communicating with the Go backend
+✅ Detection data is being persisted to SQLite
+✅ The detected image is being transferred successfully
+✅ Person detection triggers the email notification
+✅ Email notification with the captured photo is sent successfully
+Troubleshooting
+Go backend does not start
+
+Make sure you are running the command from the project root:
+
+go run main.go
+
+
+Also verify that the required Go dependencies are installed.
+
+Python camera does not start
+
+Make sure the virtual environment is activated:
+
+# Example
+source .venv/bin/activate
+
+
+Then run:
+
+python detect.py
+
+No person detection appears
+
+Make sure:
+
+Your webcam is connected and accessible.
+Your head and shoulders are clearly visible.
+There is sufficient lighting.
+The camera window is open and displaying a live feed.
+Python shows no image attachment log
+
+Verify that the Go backend is already running before starting the Python client.
+
+The expected startup order is:
+
+1. Go backend
+2. Python camera
+3. Person enters camera frame
+4. Detection occurs
+5. Image is sent to Go
+6. Detection is saved to SQLite
+7. Email alert is triggered
+
+Email notification is not sent
+
+Check the Go terminal for:
+
+Person detected and image received. Triggering email...
+
+
+If this message appears but the success message does not, check the email configuration and credentials used by the backend.
+
+Quick Start
+
+For subsequent runs, the process is simply:
+
+Terminal 1
+
+go run main.go
+
+
+Terminal 2
+
+python detect.py
+
+
+Then step into the camera frame and wait for the person detection.
+
+Expected Result
+
+A successful test should produce the following sequence:
+
+Python:
+DEBUG: Attached image of size XXXXX bytes
+
+Go:
+Saved 1 detections to SQLite...
+Person detected and image received. Triggering email...
+--> Real-time email alert with photo sent successfully!
+
+
+At this point, the AI Vision Camera pipeline has successfully completed an end-to-end detection, persistence, and notification test.
