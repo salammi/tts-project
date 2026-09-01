@@ -21,7 +21,23 @@ A comprehensive sandbox and development pipeline for Vietnamese speech synthesis
 - **PyTorch:** **PyTorch >= 2.6.0** (required for secure weight loading)
 - **C/C++ & Audio Tools:** FFmpeg and PortAudio
 
-### System Dependencies
-- **Ubuntu / WSL2:**
+### Virtual Environment Setup:
+- **PyTorch:**
   ```bash
-  sudo apt update && sudo apt install -y ffmpeg libasound2-dev portaudio19-dev
+    pip install torch torchvision torchaudio
+
+- **Hugging Face core and distributed training toolkits:**
+  ```bash
+    pip install transformers datasets accelerate huggingface_hub
+
+- **Audio processing & Speaker Embedding libraries:**
+  ```bash
+    pip install soundfile librosa speechbrain scipy
+
+- **Parameter-Efficient Fine-Tuning & Quantization:**
+  ```bash
+    pip install peft onnxruntime optimum
+
+- **VieNeu-TTS SDK and audio streaming utilities:**
+  ```bash
+    pip install vieneu pyaudio
