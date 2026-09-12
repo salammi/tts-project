@@ -42,6 +42,6 @@ A comprehensive sandbox and development pipeline for Vietnamese speech synthesis
   ```bash
     pip install vieneu pyaudio
 
-- **Parameter-Efficient Fine-Tuning packaga:"
+- **Parameter-Efficient Fine-Tuning package:**
   ```bash
     python -m pip install peft
