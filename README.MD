@@ -41,3 +41,7 @@ A comprehensive sandbox and development pipeline for Vietnamese speech synthesis
 - **VieNeu-TTS SDK and audio streaming utilities:**
   ```bash
     pip install vieneu pyaudio
+
+- **Parameter-Efficient Fine-Tuning package:**
+  ```bash
+    python -m pip install peft
