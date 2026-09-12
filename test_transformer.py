@@ -4,7 +4,7 @@ from transformers import SpeechT5Processor, SpeechT5ForTextToSpeech, SpeechT5Hif
 from datasets import load_dataset
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
-printf("Executing baseline on device: {device}")
+print(f"Executing baseline on device: {device}")
 
 # Load SpeechT5 acoustic model and HiFi-GAN vocoder
 checkpoint = "microsoft/speecht5_tts"
